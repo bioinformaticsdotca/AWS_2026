@@ -11,9 +11,9 @@ IF YOUR WORKSHOP INCLUDES COMPUTE:
 # Data and Compute Setup
 
 #### Course data downloads
-Coming soon!
+Data Coming soon!
 
 #### Compute setup
-Coming soon!
+Instructions Coming soon!
 
 
