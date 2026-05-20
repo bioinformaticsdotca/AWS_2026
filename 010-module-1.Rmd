@@ -10,4 +10,73 @@
 <!--<iframe src="GOOGLE SLIDES LINK/preview" width="640" height="480" allow="autoplay"></iframe>  
 -->
 
-## Lab
+## Lab: Logging into AWS
+
+<iframe src="https://docs.google.com/presentation/d/1fZeCDynJ5iGOZJPlzapa5HI2G5DpxGeQ/preview" width="640" height="480" allow="autoplay"></iframe>  
+
+### Logging into the Amazon Cloud During the Workshop  
+
+* These instructions will **ONLY** be relevant in class, as the Cloud will not be accessible from home in advance of the class.
+ 
+* On the cloud, we're going to use the default username: **ubuntu**
+ 
+
+### Logging in with ssh (Mac/Linux)
+
+* Make sure the permissions on your private key are secure. Use chmod on your downloaded pem file:
+
+```bash
+ chmod 600 CBW.pem
+```
+
+* To log in to the instance, use the -i command line argument to specify your private key:
+
+```bash
+ ssh -i CBW.pem ubuntu@##.uhn-hpc.ca
+```
+
+(where ## is your assigned student number.)
+
+### Logging in with OpenSSH client (Windows)
+
+-   Make sure OpenSSH client is installed on your machine. Settings > System > Optional features, then search for "OpenSSH" in your added features.
+
+-   open the "Command Prompt" or "Windows PowerShell" and run
+
+``` bash
+ C:\Windows\System32\OpenSSH\ssh.exe -i CBW.pem ubuntu@##.uhn-hpc.ca
+```
+
+### File System Layout
+
+When you log in, you'll notice that you have two directories: **CourseData** and **workspace**.
+
+* The **CourseData** directory will contain the files that you'll need to complete your lab assignments.
+
+* The **workspace** directory is where you will work on your labs. Files here will be accessible through your browser.
+
+### Workspace
+
+* Everything created in your workspace on the cloud is also available by a web server on your cloud instance.  Simply go to the following in your browser:
+
+```
+ http://##.uhn-hpc.ca/
+```
+(where ## is your assigned student number.)
+
+### RStudio 
+* RStudio server is installed on your instance. It is accessible in your browser
+```
+ http://##.uhn-hpc.ca:8080
+```
+(where ## is your assigned student number.) The username is ***ubuntu***. We will give you the password in class.
+
+### Jupyter Notebook
+
+-   Jupyter Notebook is installed on your instance. It is accessible in your browser
+
+```         
+ http://##.uhn-hpc.ca:8000
+```
+
+(where \## is your assigned student number.) We will give you the password in class.

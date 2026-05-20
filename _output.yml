@@ -18,7 +18,7 @@ bookdown::gitbook:
          </a>
         <li><center><strong><a href="./"><br>CBW AWS/UNIX Primer<br><br></a></strong></center></li>
         <a href="./">
-         <img src="img/missingimg.png" width="70%" alt="CBW AWS/UNIX Primer logo" style="display:block; margin-left:auto; margin-right:auto; ">
+         <img src="img/aws.png" width="70%" alt="CBW AWS/UNIX Primer logo" style="display:block; margin-left:auto; margin-right:auto; ">
          </a>
         <br>
 

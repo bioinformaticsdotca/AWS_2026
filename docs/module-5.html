@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Module 5 | CBW AWS/UNIX Primer 2026</title>
+  <meta name="description" content="Workshop website for the 2026 CBW AWS/UNIX Primer Canadian Bioinformatics Workshop" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Module 5 | CBW AWS/UNIX Primer 2026" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="https://bioinformaticsdotca.github.io/AWS_2026/img/bioinformatics_logo.png" />
+  <meta property="og:description" content="Workshop website for the 2026 CBW AWS/UNIX Primer Canadian Bioinformatics Workshop" />
+  <meta name="github-repo" content="bioinformaticsdotca/AWS_2026" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Module 5 | CBW AWS/UNIX Primer 2026" />
+  
+  <meta name="twitter:description" content="Workshop website for the 2026 CBW AWS/UNIX Primer Canadian Bioinformatics Workshop" />
+  <meta name="twitter:image" content="https://bioinformaticsdotca.github.io/AWS_2026/img/bioinformatics_logo.png" />
+
+<meta name="author" content="Faculty: Zhibin Lu, Ben Fisher" />
+
+
+<meta name="date" content="2026-06-15" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+<link rel="prev" href="module-4.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LearningResource",
+  "name": "CBW AWS/UNIX Primer",
+  "description": "The complete set of tutorials, slides, and practical exercises for the CBW AWS/UNIX Primer 2026 Canadian Bioinformatics Workshop, hosted on GitHub Pages.",
+  "url": "https://bioinformaticsdotca.github.io/AWS_2026",
+  "learningResourceType": ["tutorial", "slides", "exercise"],
+  "inLanguage": "en",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "provider": {
+    "@type": "Organization",
+    "name": "Bioinformatics.ca",
+    "url": "https://bioinformatics.ca"
+  },
+  "keywords": "",
+  "isPartOf": {
+    "@type": "Course",
+    "@id": "https://bioinformatics.ca/workshops-all/2026-rna-seq-analysis-montreal-qc/"
+  }
+}
+</script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<a href="https://bioinformaticsdotca.github.io/">
+ <img src="img/bioinformatics_logo.png" width="90%" alt="bioinformatics.ca logo" style="display:block; margin-left:auto; margin-right:auto; margin-top:15px;">
+ </a>
+<li><center><strong><a href="./"><br>CBW AWS/UNIX Primer<br><br></a></strong></center></li>
+<a href="./">
+ <img src="img/aws.png" width="70%" alt="CBW AWS/UNIX Primer logo" style="display:block; margin-left:auto; margin-right:auto; ">
+ </a>
+<br>
+
+<li class="divider"></li>
+<li class="part"><span><b>I Introduction</b></span></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Workshop Info</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#pre-work"><i class="fa fa-check"></i>Pre-work</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#class-photo"><i class="fa fa-check"></i>Class Photo</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#schedule"><i class="fa fa-check"></i>Schedule</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="meet-your-faculty.html"><a href="meet-your-faculty.html"><i class="fa fa-check"></i>Meet Your Faculty</a></li>
+<li class="chapter" data-level="" data-path="data-and-compute-setup.html"><a href="data-and-compute-setup.html"><i class="fa fa-check"></i>Data and Compute Setup</a></li>
+<li class="part"><span><b>II Modules</b></span></li>
+<li class="chapter" data-level="" data-path="module-1.html"><a href="module-1.html"><i class="fa fa-check"></i>Module 1</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-1.html"><a href="module-1.html#lecture"><i class="fa fa-check"></i>Lecture</a></li>
+<li class="chapter" data-level="" data-path="module-1.html"><a href="module-1.html#lab-logging-into-aws"><i class="fa fa-check"></i>Lab: Logging into AWS</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-1.html"><a href="module-1.html#logging-into-the-amazon-cloud-during-the-workshop"><i class="fa fa-check"></i>Logging into the Amazon Cloud During the Workshop</a></li>
+<li class="chapter" data-level="" data-path="module-1.html"><a href="module-1.html#logging-in-with-ssh-maclinux"><i class="fa fa-check"></i>Logging in with ssh (Mac/Linux)</a></li>
+<li class="chapter" data-level="" data-path="module-1.html"><a href="module-1.html#logging-in-with-openssh-client-windows"><i class="fa fa-check"></i>Logging in with OpenSSH client (Windows)</a></li>
+<li class="chapter" data-level="" data-path="module-1.html"><a href="module-1.html#file-system-layout"><i class="fa fa-check"></i>File System Layout</a></li>
+<li class="chapter" data-level="" data-path="module-1.html"><a href="module-1.html#workspace"><i class="fa fa-check"></i>Workspace</a></li>
+<li class="chapter" data-level="" data-path="module-1.html"><a href="module-1.html#rstudio"><i class="fa fa-check"></i>RStudio</a></li>
+<li class="chapter" data-level="" data-path="module-1.html"><a href="module-1.html#jupyter-notebook"><i class="fa fa-check"></i>Jupyter Notebook</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="module-2.html"><a href="module-2.html"><i class="fa fa-check"></i>Module 2</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-2.html"><a href="module-2.html#lecture-1"><i class="fa fa-check"></i>Lecture</a></li>
+<li class="chapter" data-level="" data-path="module-2.html"><a href="module-2.html#lab-introduction-to-the-command-line"><i class="fa fa-check"></i>Lab: Introduction to the command line</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-2.html"><a href="module-2.html#exercise-exploring-the-filesystem"><i class="fa fa-check"></i>Exercise: Exploring the filesystem</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="module-3.html"><a href="module-3.html"><i class="fa fa-check"></i>Module 3</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-3.html"><a href="module-3.html#lecture-2"><i class="fa fa-check"></i>Lecture</a></li>
+<li class="chapter" data-level="" data-path="module-3.html"><a href="module-3.html#lab-file-manipulation"><i class="fa fa-check"></i>Lab: File manipulation</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-3.html"><a href="module-3.html#exercise-reading-text-files"><i class="fa fa-check"></i>Exercise: Reading text files</a></li>
+<li class="chapter" data-level="" data-path="module-3.html"><a href="module-3.html#exercise-editing-text-files"><i class="fa fa-check"></i>Exercise: Editing text files</a></li>
+<li class="chapter" data-level="" data-path="module-3.html"><a href="module-3.html#reference-material"><i class="fa fa-check"></i>Reference material</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="module-4.html"><a href="module-4.html"><i class="fa fa-check"></i>Module 4</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-4.html"><a href="module-4.html#lecture-3"><i class="fa fa-check"></i>Lecture</a></li>
+<li class="chapter" data-level="" data-path="module-4.html"><a href="module-4.html#lab-searching-and-sorting-through-files"><i class="fa fa-check"></i>Lab: Searching and sorting through files</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-4.html"><a href="module-4.html#setup"><i class="fa fa-check"></i>Setup</a></li>
+<li class="chapter" data-level="" data-path="module-4.html"><a href="module-4.html#data-exploration"><i class="fa fa-check"></i>Data Exploration</a></li>
+<li class="chapter" data-level="" data-path="module-4.html"><a href="module-4.html#sorting"><i class="fa fa-check"></i>Sorting</a></li>
+<li class="chapter" data-level="" data-path="module-4.html"><a href="module-4.html#what-does-mean"><i class="fa fa-check"></i>What Does &gt;&gt; Mean?</a></li>
+<li class="chapter" data-level="" data-path="module-4.html"><a href="module-4.html#running-commands-together"><i class="fa fa-check"></i>Running Commands Together</a></li>
+<li class="chapter" data-level="" data-path="module-4.html"><a href="module-4.html#piping-commands-together"><i class="fa fa-check"></i>Piping Commands Together</a></li>
+<li class="chapter" data-level="" data-path="module-4.html"><a href="module-4.html#pipe-reading-comprehension"><i class="fa fa-check"></i>Pipe Reading Comprehension</a></li>
+<li class="chapter" data-level="" data-path="module-4.html"><a href="module-4.html#pipe-construction"><i class="fa fa-check"></i>Pipe Construction</a></li>
+<li class="chapter" data-level="" data-path="module-4.html"><a href="module-4.html#which-pipe"><i class="fa fa-check"></i>Which Pipe?</a></li>
+<li class="chapter" data-level="" data-path="module-4.html"><a href="module-4.html#checking-files"><i class="fa fa-check"></i>Checking Files</a></li>
+<li class="chapter" data-level="" data-path="module-4.html"><a href="module-4.html#wildcard-expressions"><i class="fa fa-check"></i>Wildcard Expressions</a></li>
+<li class="chapter" data-level="" data-path="module-4.html"><a href="module-4.html#key-points"><i class="fa fa-check"></i>Key Points</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="module-5.html"><a href="module-5.html"><i class="fa fa-check"></i>Module 5</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-5.html"><a href="module-5.html#lecture-4"><i class="fa fa-check"></i>Lecture</a></li>
+<li class="chapter" data-level="" data-path="module-5.html"><a href="module-5.html#lab-putting-it-all-together"><i class="fa fa-check"></i>Lab: Putting it all together</a>
+<ul>
+<li class="chapter" data-level="" data-path="module-5.html"><a href="module-5.html#writing-your-first-script"><i class="fa fa-check"></i>Writing your first script</a></li>
+<li class="chapter" data-level="" data-path="module-5.html"><a href="module-5.html#awk"><i class="fa fa-check"></i>Awk</a></li>
+<li class="chapter" data-level="" data-path="module-5.html"><a href="module-5.html#key-points-1"><i class="fa fa-check"></i>Key Points</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<h1 id="sponsors">Sponsors</h1>
+<center>
+<a href="https://www.cihr-irsc.gc.ca"><img src="img/sponsors/cihr.png" width=90% style="padding-bottom: 20px" alt="Canadian Institutes of Health Research logo."></a>
+
+<a href="https://genomecanada.ca/"><img src="img/sponsors/genomecanada.png" height="55" style="display:inline-block;"  style="padding-bottom: 20px" alt="Genome Canada logo.">
+<a href="https://www.ontariogenomics.ca/"><img src="img/sponsors/ontariogenomics.png" height="55" style="display:inline-block;" style="padding-bottom: 20px;" alt="Ontario Genomics logo.">
+<br><br>
+<a href="https://oicr.on.ca/"><img src="img/sponsors/oicr.png" width=35% style="display:inline-block;" style="padding-bottom: 20px" alt="Ontario Institute for Cancer Research logo.">
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">CBW AWS/UNIX Primer 2026</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="module-5" class="section level1 hasAnchor">
+<h1>Module 5<a href="module-5.html#module-5" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="lecture-4" class="section level2 hasAnchor">
+<h2>Lecture<a href="module-5.html#lecture-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="lab-putting-it-all-together" class="section level2 hasAnchor">
+<h2>Lab: Putting it all together<a href="module-5.html#lab-putting-it-all-together" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="writing-your-first-script" class="section level3 hasAnchor">
+<h3>Writing your first script<a href="module-5.html#writing-your-first-script" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We are finally ready to see what makes the shell such a powerful programming environment. We are going to take the commands we repeat frequently and save them in files so that we can re-run all those operations again later by typing a single command. For historical reasons, a bunch of commands saved in a file is usually called a shell script, but make no mistake: these are actually small programs.</p>
+<p>Not only will writing shell scripts make your work faster– you won’t have to retype the same commands over and over again– it will also make it more accurate (fewer chances for typos) and more reproducible. If you come back to your work later (or if someone else finds your work and wants to build on it) you will be able to reproduce the same results simply by running your script, rather than having to remember or retype a long list of commands.</p>
+<p>Let’s start by going back to <code>data/genomes</code> and creating a new file, <code>count_tags.sh</code> which will become our shell script:</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb62-1"><a href="module-5.html#cb62-1" tabindex="-1"></a><span class="ex">$</span> cd data/genomes</span>
+<span id="cb62-2"><a href="module-5.html#cb62-2" tabindex="-1"></a><span class="ex">$</span> nano count_tags.sh</span></code></pre></div>
+<p>The command nano <code>count_tags.sh</code> opens the file <code>count_tags.sh</code> within the text editor ‘nano’ (which runs within the shell). If the file does not exist, it will be created. We can use the text editor to directly edit the file – we’ll simply insert the following line:</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb63-1"><a href="module-5.html#cb63-1" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-n</span> <span class="st">&quot;atlanta.gbff: &quot;</span></span>
+<span id="cb63-2"><a href="module-5.html#cb63-2" tabindex="-1"></a><span class="fu">grep</span> <span class="st">&quot;/locus_tag=&quot;</span> atlanta.gbff <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span></span></code></pre></div>
+<p>Then we save the file (Ctrl-O in nano), and exit the text editor (Ctrl-X in nano). Check that the directory molecules now contains a file called <code>count_tags.sh</code>.</p>
+<p>Once we have saved the file, we can ask the shell to execute the commands it contains. Our shell is called bash, so we run the following command:</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb64-1"><a href="module-5.html#cb64-1" tabindex="-1"></a><span class="ex">$</span> bash count_tags.sh</span></code></pre></div>
+<pre><code>atlanta.gbff 12237</code></pre>
+<p>Sure enough, our script’s output is exactly what we would get if we ran that pipeline directly.</p>
+<p>I’ve noticed that each locus tag appears twice in the gbff file, so we’re double-counting a lot of tags. Let’s modify our script to only count unique tags:</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb66-1"><a href="module-5.html#cb66-1" tabindex="-1"></a><span class="ex">$</span> nano count_tags.sh</span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb67-1"><a href="module-5.html#cb67-1" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-n</span> <span class="st">&quot;atlanta.gbff: &quot;</span></span>
+<span id="cb67-2"><a href="module-5.html#cb67-2" tabindex="-1"></a><span class="fu">grep</span> <span class="st">&quot;/locus_tag=&quot;</span> atlanta.gbff <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span></span></code></pre></div>
+<p>Now when we run the script:</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb68-1"><a href="module-5.html#cb68-1" tabindex="-1"></a><span class="ex">$</span> bash count_tags.sh</span></code></pre></div>
+<pre><code>atlanta.gbff 6109</code></pre>
+<p>What if we want to count the number of locus tags in many files? Let’s introduce a new concept: loopingOpen up our script again</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb70-1"><a href="module-5.html#cb70-1" tabindex="-1"></a><span class="ex">$</span> nano count_tags.sh</span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb71-1"><a href="module-5.html#cb71-1" tabindex="-1"></a><span class="cf">for</span> filename <span class="kw">in</span> atlanta.gbff london.gbff</span>
+<span id="cb71-2"><a href="module-5.html#cb71-2" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb71-3"><a href="module-5.html#cb71-3" tabindex="-1"></a>  <span class="bu">echo</span> <span class="at">-n</span> <span class="st">&quot;</span><span class="va">$filename</span><span class="st"> &quot;</span></span>
+<span id="cb71-4"><a href="module-5.html#cb71-4" tabindex="-1"></a>  <span class="fu">grep</span> <span class="st">&quot;/locus_tag=&quot;</span> <span class="va">$filename</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span></span>
+<span id="cb71-5"><a href="module-5.html#cb71-5" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div>
+<p>We feed the loop with two elements: the text “atlanta.gbff” and then with the text “london.gbff”.
+The loop executes all of the commands between <code>do</code> and <code>done</code> for each time the loop iterates, and each time, the variable “$filename” is replaced by either “atlanta.gbff” or “london.gbff”</p>
+<p>What if we wanted to count the number of tags in other gbff file. At the moment, the filenames are hard-coded into our script. It only counts tags in atlanta.gbff and london.gbff. We can make the script a little bit more flexible by using the variable nams “$1” and “$2”</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb72-1"><a href="module-5.html#cb72-1" tabindex="-1"></a><span class="ex">$</span> nano count_tags.sh</span></code></pre></div>
+<p>Now, within “nano”, replace the text “atlanta.gbff” with the special variable called $1:</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb73-1"><a href="module-5.html#cb73-1" tabindex="-1"></a><span class="cf">for</span> filename <span class="kw">in</span> <span class="va">$1</span> <span class="va">$2</span></span>
+<span id="cb73-2"><a href="module-5.html#cb73-2" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb73-3"><a href="module-5.html#cb73-3" tabindex="-1"></a>  <span class="bu">echo</span> <span class="at">-n</span> <span class="st">&quot;</span><span class="va">$filename</span><span class="st"> &quot;</span></span>
+<span id="cb73-4"><a href="module-5.html#cb73-4" tabindex="-1"></a>  <span class="fu">grep</span> <span class="st">&quot;/locus_tag=&quot;</span> <span class="va">$filename</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span></span>
+<span id="cb73-5"><a href="module-5.html#cb73-5" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div>
+<p>Inside a shell script, <code>$1</code> means ‘the first filename (or other argument) on the command line’. Similarly, <code>$2</code> is the second argument passed to the script. We can now run our script like this:</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb74-1"><a href="module-5.html#cb74-1" tabindex="-1"></a><span class="ex">$</span> bash count_tags.sh atlanta.gbff london.gbff</span></code></pre></div>
+<pre><code>atlanta.gbff 6109
+london.gbff 5831</code></pre>
+<p>or on a different file like this:</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb76-1"><a href="module-5.html#cb76-1" tabindex="-1"></a><span class="ex">$</span> bash count_tags.sh nevada.gbff texas.gbff</span></code></pre></div>
+<pre><code>nevada.gbff 5691
+texas.gbff 5424</code></pre>
+<p>In case the filename happens to contain any spaces, we surround $1 with double-quotes.</p>
+<p>This is better, but our script still isn’t quite as flexible as I’d like. It can only operate on two files at a time. What if I wanted to count the tags in three or four files at a time?</p>
+<p>There is a special variable “$@” which holds all of the arguments passed to the script. Let’s make another modification to our script:</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb78-1"><a href="module-5.html#cb78-1" tabindex="-1"></a><span class="ex">$</span> nano count_tags.sh</span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb79-1"><a href="module-5.html#cb79-1" tabindex="-1"></a><span class="cf">for</span> filename <span class="kw">in</span> <span class="va">$@</span></span>
+<span id="cb79-2"><a href="module-5.html#cb79-2" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb79-3"><a href="module-5.html#cb79-3" tabindex="-1"></a>  <span class="bu">echo</span> <span class="at">-n</span> <span class="st">&quot;</span><span class="va">$filename</span><span class="st"> &quot;</span></span>
+<span id="cb79-4"><a href="module-5.html#cb79-4" tabindex="-1"></a>  <span class="fu">grep</span> <span class="st">&quot;/locus_tag=&quot;</span> <span class="va">$filename</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span></span>
+<span id="cb79-5"><a href="module-5.html#cb79-5" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div>
+<p>The “$@” variable gets replaced with all of the arguments passed to our script. This allows us to run:</p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb80-1"><a href="module-5.html#cb80-1" tabindex="-1"></a><span class="ex">$</span> bash count_tags.sh <span class="pp">*</span>.gbff</span></code></pre></div>
+<pre><code>atlanta.gbff 6109
+braunschweig.gbff 5248
+lab-strain.gbff 4609
+london.gbff 5831
+muenster.gbff 5176
+nevada.gbff 5691
+texas.gbff 5424</code></pre>
+<p>This works, but it may take the next person who reads <code>count_tags.sh</code> a moment to figure out what it does. We can improve our script by adding some comments at the top:</p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb82-1"><a href="module-5.html#cb82-1" tabindex="-1"></a><span class="ex">$</span> nano count_tags.sh</span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb83-1"><a href="module-5.html#cb83-1" tabindex="-1"></a><span class="co"># Counts the number of unique locus tags in one or more gbff files.</span></span>
+<span id="cb83-2"><a href="module-5.html#cb83-2" tabindex="-1"></a></span>
+<span id="cb83-3"><a href="module-5.html#cb83-3" tabindex="-1"></a><span class="cf">for</span> filename <span class="kw">in</span> <span class="va">$@</span></span>
+<span id="cb83-4"><a href="module-5.html#cb83-4" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb83-5"><a href="module-5.html#cb83-5" tabindex="-1"></a>  <span class="bu">echo</span> <span class="at">-n</span> <span class="st">&quot;</span><span class="va">$filename</span><span class="st"> &quot;</span></span>
+<span id="cb83-6"><a href="module-5.html#cb83-6" tabindex="-1"></a>  <span class="fu">grep</span> <span class="st">&quot;/locus_tag=&quot;</span> <span class="va">$filename</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span></span>
+<span id="cb83-7"><a href="module-5.html#cb83-7" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div>
+<p>A comment starts with a <code>#</code> character and runs to the end of the line. The computer ignores comments, but they’re invaluable for helping people (including your future self) understand and use scripts. The only caveat is that each time you modify the script, you should check that the comment is still accurate: an explanation that sends the reader in the wrong direction is worse than none at all.</p>
+<p>Lastly, let’s make our script executable. First we’ll modify the file permissions. This can be done using the <code>chmod</code> command:</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb84-1"><a href="module-5.html#cb84-1" tabindex="-1"></a><span class="fu">chmod</span> +x count_tags.sh</span></code></pre></div>
+<p>We’ll also add a “shebang” line to our script which tells the shell what program should be used to run our script. Modify our script to include this first line:</p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb85-1"><a href="module-5.html#cb85-1" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb85-2"><a href="module-5.html#cb85-2" tabindex="-1"></a><span class="co"># Counts the number of unique locus tags in one or more gbff files.</span></span>
+<span id="cb85-3"><a href="module-5.html#cb85-3" tabindex="-1"></a></span>
+<span id="cb85-4"><a href="module-5.html#cb85-4" tabindex="-1"></a><span class="cf">for</span> filename <span class="kw">in</span> <span class="va">$@</span></span>
+<span id="cb85-5"><a href="module-5.html#cb85-5" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb85-6"><a href="module-5.html#cb85-6" tabindex="-1"></a>  <span class="bu">echo</span> <span class="at">-n</span> <span class="st">&quot;</span><span class="va">$filename</span><span class="st"> &quot;</span></span>
+<span id="cb85-7"><a href="module-5.html#cb85-7" tabindex="-1"></a>  <span class="fu">grep</span> <span class="st">&quot;/locus_tag=&quot;</span> <span class="va">$filename</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span></span>
+<span id="cb85-8"><a href="module-5.html#cb85-8" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div>
+<p>Exercise: Can you create a command that uses our count_tags.sh script to find the gbff file with the smallest number of locus tags?</p>
+</div>
+<div id="awk" class="section level3 hasAnchor">
+<h3>Awk<a href="module-5.html#awk" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Another very helpful “Swiss Army knife” of the shell is the program <code>awk</code>. Awk that, like <code>grep</code>, allows you to search for lines in a file matching some condition, but <code>awk</code> /also/ allows you to perform some small operations on those lines once you have matched them.</p>
+<p>Let’s build an simple example piece by piece.</p>
+<p>Open up a new file:</p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb86-1"><a href="module-5.html#cb86-1" tabindex="-1"></a><span class="fu">nano</span> find_lengths.awk</span></code></pre></div>
+<p>In this awk script, let’s just write:</p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode awk"><code class="sourceCode awk"><span id="cb87-1"><a href="module-5.html#cb87-1" tabindex="-1"></a><span class="ot">/</span><span class="ss">LOCUS</span><span class="ot">/</span></span></code></pre></div>
+<p>This is instructing awk to find all files that match the string “LOCUS”. We can find all the lines matching “LOCUS” in the atlanta.gbff file by running:</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb88-1"><a href="module-5.html#cb88-1" tabindex="-1"></a><span class="fu">awk</span> <span class="at">-f</span> find_lengths.awk atlanta.gbff</span></code></pre></div>
+<pre><code>LOCUS       NZ_CP027572          5858866 bp    DNA     circular CON 24-MAY-2021
+LOCUS       NZ_CP027571            97037 bp    DNA     circular CON 24-MAY-2021</code></pre>
+<p>Notice that the third column in the “LOCUS” lines includes the length of the sequence. Let’s pull that out. Modify the contents of <code>find_lengths.awk</code> to include a block (executed each time awk finds a matching line)</p>
+<p>In an awk script, we can use $3 to refer to the text in the third column (space-separated). Note that this is different to the dollar-sign variables in bash. Here we are writing in a script in the awk language, and not the bash language.</p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode awk"><code class="sourceCode awk"><span id="cb90-1"><a href="module-5.html#cb90-1" tabindex="-1"></a><span class="ot">/</span><span class="ss">LOCUS</span><span class="ot">/</span> <span class="op">{</span></span>
+<span id="cb90-2"><a href="module-5.html#cb90-2" tabindex="-1"></a>    <span class="kw">print</span> <span class="st">&quot;Found a locus with length &quot;</span> <span class="dt">$3</span> <span class="st">&quot; bp&quot;</span></span>
+<span id="cb90-3"><a href="module-5.html#cb90-3" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Running the script now gives:</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb91-1"><a href="module-5.html#cb91-1" tabindex="-1"></a><span class="fu">awk</span> <span class="at">-f</span> find_lengths.awk atlanta.gbff</span></code></pre></div>
+<pre><code>Found a locus with length 5858866 bp
+Found a locus with length 97037 bp</code></pre>
+<p>It might be helpful to sum up those lengths. We can create a variable called ‘total’ and add the numbers found in the third column. Open up the awk script and modify the contents to read</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode awk"><code class="sourceCode awk"><span id="cb93-1"><a href="module-5.html#cb93-1" tabindex="-1"></a><span class="ot">/</span><span class="ss">LOCUS</span><span class="ot">/</span> <span class="op">{</span></span>
+<span id="cb93-2"><a href="module-5.html#cb93-2" tabindex="-1"></a>    <span class="kw">print</span> <span class="st">&quot;Found a locus with length &quot;</span> <span class="dt">$3</span> <span class="st">&quot; bp&quot;</span></span>
+<span id="cb93-3"><a href="module-5.html#cb93-3" tabindex="-1"></a>    sum <span class="op">+=</span> <span class="dt">$3</span></span>
+<span id="cb93-4"><a href="module-5.html#cb93-4" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb93-5"><a href="module-5.html#cb93-5" tabindex="-1"></a></span>
+<span id="cb93-6"><a href="module-5.html#cb93-6" tabindex="-1"></a><span class="cf">END</span> <span class="op">{</span></span>
+<span id="cb93-7"><a href="module-5.html#cb93-7" tabindex="-1"></a>    <span class="kw">print</span> <span class="st">&quot;Total: &quot;</span> sum <span class="st">&quot; bp&quot;</span></span>
+<span id="cb93-8"><a href="module-5.html#cb93-8" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>We’ve written a new block here. Our first block uses the <code>/LOCUS/</code> matcher so it is run every time awk finds a line that matches “LOCUS”. The <code>END</code> block is a special block that is run only once - when awk reaches the end of the input file. There is a similar optional <code>BEGIN</code> block run once at the beginning, but we have no use for that in our example.</p>
+<p>Running the script now gives:</p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb94-1"><a href="module-5.html#cb94-1" tabindex="-1"></a><span class="fu">awk</span> <span class="at">-f</span> find_lengths.awk atlanta.gbff</span></code></pre></div>
+<pre><code>Found a locus with length 5858866 bp
+Found a locus with length 97037 bp
+Total: 5955903 bp</code></pre>
+<p>I think that this script is a little bit too long and verbose. Let’s clean it up a little to read simply:</p>
+<div class="sourceCode" id="cb96"><pre class="sourceCode awk"><code class="sourceCode awk"><span id="cb96-1"><a href="module-5.html#cb96-1" tabindex="-1"></a><span class="ot">/</span><span class="ss">LOCUS</span><span class="ot">/</span> <span class="op">{</span>sum <span class="op">+=</span> <span class="dt">$3</span><span class="op">}</span></span>
+<span id="cb96-2"><a href="module-5.html#cb96-2" tabindex="-1"></a><span class="cf">END</span> <span class="op">{</span><span class="kw">print</span> sum<span class="op">}</span></span></code></pre></div>
+<p>This gives us just the total length for a file:</p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb97-1"><a href="module-5.html#cb97-1" tabindex="-1"></a><span class="fu">awk</span> <span class="at">-f</span> find_lengths.awk atlanta.gbff</span></code></pre></div>
+<pre><code>5955903</code></pre>
+<p>It is actually not even necessary to write our awk command in a separte file. Our script is short enough that we might even just want to write it in-line inside a command:</p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb99-1"><a href="module-5.html#cb99-1" tabindex="-1"></a><span class="fu">awk</span> <span class="st">&#39;/LOCUS/{sum += $3} END{print sum}&#39;</span> atlanta.gbff</span></code></pre></div>
+<pre><code>5955903</code></pre>
+<p>Exercise: Can you write a command or a bash script to find the genome with the smallest total size?</p>
+</div>
+<div id="key-points-1" class="section level3 hasAnchor">
+<h3>Key Points<a href="module-5.html#key-points-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Save commands in files (usually called shell scripts) for re-use.</li>
+<li><code>bash [filename]</code> runs the commands saved in a file.</li>
+<li><code>$@</code> refers to all of a shell script’s command-line arguments.</li>
+<li><code>$1</code>, <code>$2</code>, etc., refer to the first command-line argument, the second command-line argument, etc.</li>
+<li>Place variables in quotes if the values might have spaces in them.</li>
+<li>Letting users decide what files to process is more flexible and more consistent with built-in Unix commands.</li>
+</ol>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="module-4.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": false,
+    "twitter": false,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/bioinformaticsdotca/AWS_2026/blob/main/050-module-5.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+</body>
+
+</html>

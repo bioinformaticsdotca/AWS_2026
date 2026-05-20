@@ -3,4 +3,106 @@
 ## Lecture
 
 
-## Lab
+## Lab: File manipulation
+
+
+<iframe src="https://docs.google.com/presentation/d/15UXlpb-I3KPOB7_JniJu3gT2uypKmCAD/preview" width="640" height="480" allow="autoplay"></iframe>  
+
+### Exercise: Reading text files
+
+Using the commands you just learned, explore the .gff3 file in the Home directory. 
+
+1. Is the file a text file?
+
+<details>
+  <summary>
+Solution
+  </summary>
+
+Yes. You can use `less`, `cat`, `head`, or `tail` and get human-readable info. Note that this doesn't have anything to do with its file extension.
+</details> <br>
+
+
+2. How many lines does the file have?
+
+<details>
+  <summary>
+Solution
+  </summary>
+
+
+```bash
+$ wc -l GCF_009858895.2_ASM985889v3_genomic.gff 
+67 GCF_009858895.2_ASM985889v3_genomic.gff
+```
+
+There are 67 lines in this file.
+
+</details> <br>
+
+  
+
+3. Can you read the content of the file using less?
+
+<details>
+  <summary>
+Solution
+  </summary>
+
+```bash
+$ less GCF_009858895.2_ASM985889v3_genomic.gff 
+```
+
+</details>
+
+---
+
+### Exercise: Editing text files
+
+Using the commands you just learned, create a file called helloworld.txt and edit it using nano. 
+
+1. Write “Hello world” into the file. Save the file and exit nano. 
+2. Create a subdirectory called “test”; move the helloworld.txt file into test.
+3. Create a copy of the helloworld.txt file called helloworld2.txt 
+
+<details>
+  <summary>
+Solution
+  </summary>
+
+1. First, use the `nano` command to open a file called `helloworld.txt`
+
+```bash
+$ nano helloworld.txt
+```
+
+Inside the nano editor, write "Hello world", then use the `^O` option to write the changes and `^X` to exit.
+
+2. Create a subdirectory called “test”; move the helloworld.txt file into test.
+
+Use the command `mkdir` to create this new directory. Then, use `mv` to move `helloworld.txt` into this directory.
+
+
+```bash
+$ mkdir test
+$ mv helloworld.txt test/
+```
+
+3. Create a copy of the `helloworld.txt` file called `helloworld2.txt`. 
+
+Change the working directory using `cd`, then use the `cp` command to create the copy.
+
+```bash
+$ cd test
+$ cp helloworld.txt helloworld2.txt
+
+```
+
+</details>
+
+
+### Reference material
+Here are two cheat-sheets that can be useful to have as a reference for common UNIX/Linux commands:
+
+- [FOSSwire.com Unix/Linux Command Reference](https://files.fosswire.com/2007/08/fwunixref.pdf)
+- [SUSO.org Unix/Linux Command Syntax and Reference](https://i.redd.it/6s2q64ticje51.png)

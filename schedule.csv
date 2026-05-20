@@ -1,0 +1,11 @@
+day_label,date,activity,type,time_1,timezone_1_label,time_2,timezone_2_label
+June 15,2026-06-15,Welcome Introduction,activity,10:00,"Time (ET)",11:00,"Time (AT)"
+June 15,2026-06-15,Module 1: Logging into AWS,activity,10:10,"Time (ET)",11:10,"Time (AT)"
+June 15,2026-06-15,Short Break,break,11:10,"Time (ET)",12:10,"Time (AT)"
+June 15,2026-06-15,Module 2: Introduction to the UNIX Command Line,activity,11:15,"Time (ET)",12:15,"Time (AT)"
+June 15,2026-06-15,Module 3: File Manipulation,activity,11:35,"Time (ET)",12:35,"Time (AT)"
+June 15,2026-06-15,Long Break,break,12:05,"Time (ET)",13:05,"Time (AT)"
+June 15,2026-06-15,Module 4: Searching and Sorting Through Files,activity,13:05,"Time (ET)",14:05,"Time (AT)"
+June 15,2026-06-15,Short Break,break,14:00,"Time (ET)",15:00,"Time (AT)"
+June 15,2026-06-15,Module 5: Shell scripts,activity,14:05,"Time (ET)",15:05,"Time (AT)"
+June 15,2026-06-15,Finished,break,15:00,"Time (ET)",16:00,"Time (AT)"
